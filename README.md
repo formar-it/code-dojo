@@ -1,6 +1,8 @@
 # Code Dojo - Forit
 
-Este es el repositorio para el Code Dojo de Forit
+Este es el repositorio para el Code Dojo de Forit.
+
+Nos reunimos los martes a las 9:30hrs en alguna sala disponible de Gather Town.
 
 ## Principios
 
@@ -24,31 +26,35 @@ Si prestamos atención podemos aprender de alguien que esta haciendo algo por pr
 
 ### Dominando un tema
 
-Si es fácil para vos, explicáselo a alguien que le resulte difícil. Explicalo hasta que deje de resultarle difícil. En este proceso vas a aprender más sobre el tema.
+Si el tema es fácil para vos, explicáselo a alguien que le resulte difícil. Explicalo hasta que deje de resultarle difícil. En este proceso vas a aprender más sobre el tema.
 
 ## Práctica deliberada
 
-No es lo mismo que aprender mientras trabajamos. Una práctica deliberada es cuando buscamos nuevas experiencias que pongan a prueba nuestras habilidades lo justo y te den retroalimentación que te permita aprender y mejorar.
+No es lo mismo aprender mientras trabajamos. Una práctica deliberada es cuando buscamos nuevas experiencias que pongan a prueba nuestras habilidades lo justo y nos den retroalimentación que nos permita aprender y mejorar.
 
-La practica deliberada funciona en largos periodos de tiempo, y es está en el corazón de conseguir pericia en algo.
+La practica deliberada funciona en largos periodos de tiempo, y es algo fundamental para conseguir pericia en un tema.
 
 ### TDD es la forma correcta de programar
 
-No se puede discutir forma sin código, y uno no puede mostrar código sin tests. Este es un lugar de aprendizaje, donde aceptamos que "el diseño es el código" y el código sin tests no existe.
+No se puede discutir forma (diseño) sin código, y uno no puede mostrar código sin tests. Este es un lugar de aprendizaje, donde aceptamos que "el diseño es el código" y el código sin tests no existe.
 
-## TDD
+## Test Driven Development (TDD)
 
-Para aprender TDD, vamos a seguir las siguientes reglas, que no es necesariamente la manera en la que trabajaríamos en un proyecto real.
+Para aprender TDD, vamos a seguir las siguientes reglas, que no es, necesariamente, la manera en la que trabajaríamos en un proyecto real.
 
 ### Pasos de bebé
 
-El siguiente paso a tomar siempre tiene que ser el más pequeño posible. Si procedemos asi, podemos mantener los próximos pasos siempre triviales.
+El siguiente paso a tomar siempre tiene que ser el más pequeño posible, si, aun más pequeño que eso que estás imaginando. Si procedemos asi, podemos mantener los próximos pasos siempre triviales.
+
+Esto lo hacemos para aprender la técnica de hacerlo. Cuando estamos trabajando en un proyecto real, podemos tomar pasos más grandes si tenemos la confianza, pero tenemos la posibilidad de volver a tomar pasos de bebé si nos encontramos con dificultades.
+
+TDD no es para buenos programadores, es para hacer que programadores regulares sean buenos.
 
 ### Unidad bajo prueba (Unit under test)
 
-La unidad bajo prueba es la clase o función que estamos testeando. Al escribir tests siempre deberíamos focalizarnos en una sola unidad bajo prueba.
+La unidad bajo prueba es la clase o función que estamos testeando. Al escribir tests siempre nos focalizamos en una sola unidad bajo prueba.
 
-### Ritmo de los tests primero
+### Ritmo de "los tests primero"
 
 - Escribimos un test para un paso de bebé de la unidad de prueba
 - Corremos todos los tests y vemos que el nuevo test falla
