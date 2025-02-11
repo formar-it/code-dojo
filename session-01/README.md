@@ -22,3 +22,9 @@ Por ejemplo:
 
 - 53 debería devolver "FizzBuzz" (contiene 5 y 3)
 - 35 debería devolver "FizzBuzzBuzz" (contiene 3 y 5 y es divisible por 5)
+
+## Tareas o tests
+
+- Testear las impresiones
+- Testear las mismas del 1 al 100
+- Testear funcion, que recibe un numero y devuelve el numero | Fizz | Buzz | FizzBuzz

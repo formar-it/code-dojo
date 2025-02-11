@@ -9,17 +9,19 @@ yarn init -p -i=latest
 rm .editorconfig
 
 echo "node_modules" > .gitignore
+echo "coverage" > .gitignore
 echo "nodeLinker: node-modules" > .yarnrc.yml
 
 # Install dev dependencies
-yarn add -D typescript @types/node vitest prettier eslint @eslint/js typescript typescript-eslint
+yarn add -D typescript @types/node vitest @vitest/coverage-v8 prettier eslint @eslint/js typescript typescript-eslint 
 
 # Add typescript configuration
 cat > tsconfig.json <<EOF
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
     "noEmit": true,
     "strict": true
   },
@@ -44,7 +46,7 @@ EOF
 
 ## Add changes to package.json
 jq '.type = "module"' package.json > package.json.tmp && mv package.json.tmp package.json
-jq '.scripts = { "lint": "eslint .","test": "vitest","check": "tsc" }' package.json > package.json.tmp && mv package.json.tmp package.json
+jq '.scripts = { "lint": "eslint --fix .","test": "vitest","check": "tsc" }' package.json > package.json.tmp && mv package.json.tmp package.json
 
 yarn prettier --write .
 
