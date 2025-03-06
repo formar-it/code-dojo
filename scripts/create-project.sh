@@ -7,10 +7,11 @@ cd $1
 yarn init -p -i=latest
 
 rm .editorconfig
+rm -rf .git
 
-echo "node_modules" > .gitignore
-echo "coverage" > .gitignore
-echo "nodeLinker: node-modules" > .yarnrc.yml
+echo "node_modules" >> .gitignore
+echo "coverage" >> .gitignore
+echo "nodeLinker: node-modules" >> .yarnrc.yml
 
 # Install dev dependencies
 yarn add -D typescript @types/node vitest @vitest/coverage-v8 prettier eslint @eslint/js typescript typescript-eslint 
