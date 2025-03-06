@@ -1,0 +1,8 @@
+{
+  "name": "domain",
+  "packageManager": "yarn@4.7.0",
+  "scripts": {
+    "check": "tsc",
+    "build": "tsc -p tsconfig.build.json"
+  }
+}
