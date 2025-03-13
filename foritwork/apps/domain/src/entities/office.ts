@@ -47,8 +47,8 @@ export interface Avatar {
 
 export interface User {
   id: string;
-  name: string;
-  avatar: Avatar;
+  /* name: string;
+  avatar: Avatar; */
   position: ScenePoint;
 }
 export interface GridArea extends GridPoint {
