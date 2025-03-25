@@ -5,6 +5,13 @@ export interface Point {
   y: number;
 }
 
+export function multiplyPoint(point: Point, scale: number): Point {
+  return {
+    x: point.x * scale,
+    y: point.y * scale,
+  };
+}
+
 export function addPoints(a: Point, b: Point): Point {
   return {
     x: a.x + b.x,

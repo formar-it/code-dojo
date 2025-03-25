@@ -1,12 +1,17 @@
 {
-  "name": "domain",
+  "name": "app-domain",
+  "type": "module",
   "packageManager": "yarn@4.7.0",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "scripts": {
     "test": "vitest",
     "check": "tsc",
     "build": "tsc -p tsconfig.build.json"
   },
   "devDependencies": {
+    "typescript": "npm:^5.8.2",
     "vitest": "npm:^3.0.8"
   }
 }

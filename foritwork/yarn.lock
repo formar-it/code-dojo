@@ -1768,6 +1768,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"app-domain@workspace:^, app-domain@workspace:apps/domain":
+  version: 0.0.0-use.local
+  resolution: "app-domain@workspace:apps/domain"
+  dependencies:
+    typescript: "npm:^5.8.2"
+    vitest: "npm:^3.0.8"
+  languageName: unknown
+  linkType: soft
+
 "argparse@npm:^2.0.1":
   version: 2.0.1
   resolution: "argparse@npm:2.0.1"
@@ -2339,14 +2348,6 @@ __metadata:
   checksum: 10c0/dce809431cad978e0778769a3818ea797ebe0bd542c85032ad9ad98971e2021a146be62feb259d7ffe4b76739e07b23e861b29c3f184ac8d38cc6ba956d5c586
   languageName: node
   linkType: hard
-
-"domain@workspace:apps/domain":
-  version: 0.0.0-use.local
-  resolution: "domain@workspace:apps/domain"
-  dependencies:
-    vitest: "npm:^3.0.8"
-  languageName: unknown
-  linkType: soft
 
 "dunder-proto@npm:^1.0.1":
   version: 1.0.1
@@ -2979,6 +2980,7 @@ __metadata:
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
     "@vitejs/plugin-react": "npm:^4.3.4"
+    app-domain: "workspace:^"
     eslint: "npm:^9.21.0"
     eslint-plugin-react-hooks: "npm:^5.1.0"
     eslint-plugin-react-refresh: "npm:^0.4.19"

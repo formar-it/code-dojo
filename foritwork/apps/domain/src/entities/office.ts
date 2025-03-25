@@ -1,3 +1,5 @@
+import { User } from "./user.js";
+
 export interface Office {
   rooms: Room[];
   name: string;
@@ -45,12 +47,6 @@ export interface Avatar {
   extras: string;
 }
 
-export interface User {
-  id: string;
-  /* name: string;
-  avatar: Avatar; */
-  position: ScenePoint;
-}
 export interface GridArea extends GridPoint {
   width: number;
   height: number;
