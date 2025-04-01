@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
-import { Direction, MapService, moveUser, User } from "app-domain";
-import { Application, Assets, Sprite } from "pixi.js";
+import { MapService, moveUser, User } from "app-domain";
+import { Application as PixiApp, Assets, Sprite } from "pixi.js";
 import "./App.css";
+import { InputManagerImplementation } from "./input/input-manager.ts";
 
 export interface AppProps {
   user: User;
@@ -10,7 +11,7 @@ export interface AppProps {
 function App({ user }: AppProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const init = async () => {
-    const app = new Application();
+    const app = new PixiApp();
     await app.init({
       background: "#1099bb",
       resizeTo: window,
@@ -24,16 +25,12 @@ function App({ user }: AppProps) {
     init();
   }, []);
 
-  return (
-    <>
-      <canvas ref={canvasRef}></canvas>
-    </>
-  );
+  return <canvas ref={canvasRef}></canvas>;
 }
 
 export default App;
 
-async function createCharacter(app: Application, user: User) {
+async function createCharacter(app: PixiApp, user: User) {
   const texture = await Assets.load("https://pixijs.com/assets/bunny.png");
   const bunny = new Sprite(texture);
   app.stage.addChild(bunny);
@@ -45,29 +42,16 @@ async function createCharacter(app: Application, user: User) {
       return true;
     },
   };
-  window.addEventListener("keydown", (e) => {
-    const direction = mapKeyToDirection(e.key);
-    if (direction) {
-      moveUser(user, mapService, direction);
-      bunny.position.set(user.position.x, user.position.y);
-    }
-  });
-}
-function mapKeyToDirection(key: string): Direction | null {
-  switch (key) {
-    case "w":
-    case "ArrowUp":
-      return Direction.N;
-    case "d":
-    case "ArrowRight":
-      return Direction.E;
-    case "s":
-    case "ArrowDown":
-      return Direction.S;
-    case "a":
-    case "ArrowLeft":
-      return Direction.W;
-    default:
-      return null;
-  }
+
+  const inputManager = new InputManagerImplementation();
+
+  const loop = () => {
+    const direction = inputManager.movementDirection();
+    moveUser(user, mapService, direction);
+    bunny.position.set(user.position.x, user.position.y);
+    requestAnimationFrame(loop);
+  };
+
+  //TODO(Piarrot): Add a way to stop the loop when the component unmounts
+  requestAnimationFrame(loop);
 }

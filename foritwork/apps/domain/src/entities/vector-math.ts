@@ -1,67 +1,54 @@
-import { ScenePoint } from "./office.js";
+export class Point {
+  constructor(
+    public readonly x: number,
+    public readonly y: number
+  ) {}
 
-export interface Point {
-  x: number;
-  y: number;
-}
+  setX(x: number): Point {
+    return new Point(x, this.y);
+  }
 
-export function multiplyPoint(point: Point, scale: number): Point {
-  return {
-    x: point.x * scale,
-    y: point.y * scale,
-  };
-}
+  setY(y: number): Point {
+    return new Point(this.x, y);
+  }
 
-export function addPoints(a: Point, b: Point): Point {
-  return {
-    x: a.x + b.x,
-    y: a.y + b.y,
-  };
+  multiply(scalar: number): Point {
+    return new Point(this.x * scalar, this.y * scalar);
+  }
+
+  add(other: Point): Point {
+    return new Point(this.x + other.x, this.y + other.y);
+  }
+
+  magnitudeWithSine(): number {
+    if (this.x == 0) return Math.abs(this.y);
+    if (this.y == 0) return Math.abs(this.x);
+    return Math.abs(this.x / Math.sin(Math.atan(this.x / this.y)));
+  }
+
+  magnitude(): number {
+    return Math.abs(Math.sqrt(this.x ** 2 + this.y ** 2));
+  }
+
+  divide(scalar: number): Point {
+    if (scalar === 0) throw new Error("Division by zero");
+    return new Point(this.x / scalar, this.y / scalar);
+  }
+
+  normalize(): Point {
+    return this.divide(this.magnitude());
+  }
 }
 
 export const Direction = {
-  E: "E",
-  W: "W",
-  N: "N",
-  S: "S",
-  NE: "NE",
-  NW: "NW",
-  SE: "SE",
-  SW: "SW",
+  None: new Point(0, 0),
+  Right: new Point(1, 0),
+  Left: new Point(-1, 0),
+  Up: new Point(0, -1),
+  Down: new Point(0, 1),
+  UpRight: new Point(1, -1).normalize(),
+  UpLeft: new Point(-1, -1).normalize(),
+  DownRight: new Point(1, 1).normalize(),
+  DownLeft: new Point(-1, 1).normalize(),
 } as const;
 export type Direction = (typeof Direction)[keyof typeof Direction];
-
-export const DirectionVector: Record<Direction, ScenePoint> = {
-  E: {
-    x: 1,
-    y: 0,
-  },
-  W: {
-    x: -1,
-    y: 0,
-  },
-  N: {
-    x: 0,
-    y: -1,
-  },
-  S: {
-    x: 0,
-    y: 1,
-  },
-  NE: {
-    x: 0.5,
-    y: -0.5,
-  },
-  NW: {
-    x: -0.5,
-    y: -0.5,
-  },
-  SE: {
-    x: 0.5,
-    y: 0.5,
-  },
-  SW: {
-    x: -0.5,
-    y: 0.5,
-  },
-};
