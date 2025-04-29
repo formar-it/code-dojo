@@ -3,7 +3,7 @@ import App from "../App.tsx";
 import { Point, User } from "app-domain";
 
 const user: User = {
-  id: "1",
+  id: crypto.randomUUID(),
   position: new Point(200, 200),
 };
 

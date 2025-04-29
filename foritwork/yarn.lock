@@ -2084,6 +2084,7 @@ __metadata:
   dependencies:
     "@types/cors": "npm:^2"
     "@types/express": "npm:^5"
+    app-domain: "workspace:^"
     cors: "npm:^2.8.5"
     express: "npm:^5.1.0"
     socket.io: "npm:^4.8.1"
