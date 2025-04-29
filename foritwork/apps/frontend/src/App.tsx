@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
-import { MapService, moveUser, User } from "app-domain";
+import { MapService, moveUser, SyncService, User } from "app-domain";
 import { Application as PixiApp, Assets, Sprite } from "pixi.js";
 import "./App.css";
 import { InputManagerImplementation } from "./input/input-manager.ts";
+import { io, Socket } from "socket.io-client";
 
 export interface AppProps {
   user: User;
@@ -45,13 +46,25 @@ async function createCharacter(app: PixiApp, user: User) {
 
   const inputManager = new InputManagerImplementation();
 
+  const syncService = new ConcreteSyncService();
+
   const loop = () => {
     const direction = inputManager.movementDirection();
-    moveUser(user, mapService, direction);
+    moveUser({ user, mapService, syncService }, direction);
     bunny.position.set(user.position.x, user.position.y);
     requestAnimationFrame(loop);
   };
 
   //TODO(Piarrot): Add a way to stop the loop when the component unmounts
   requestAnimationFrame(loop);
+}
+
+class ConcreteSyncService implements SyncService {
+  private socket: Socket;
+  constructor() {
+    this.socket = io("http://localhost:3000");
+  }
+  async sync(user: User): Promise<void> {
+    //DO NOTHING
+  }
 }

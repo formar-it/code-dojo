@@ -1,0 +1,26 @@
+{
+  "name": "app-server",
+  "type": "module",
+  "packageManager": "yarn@4.7.0",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "test": "vitest",
+    "check": "tsc",
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsx src/app.ts"
+  },
+  "devDependencies": {
+    "@types/cors": "^2",
+    "@types/express": "^5",
+    "tsx": "^4.19.3",
+    "typescript": "npm:^5.8.2",
+    "vitest": "npm:^3.0.8"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  }
+}

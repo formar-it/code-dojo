@@ -10,7 +10,7 @@ export class InputManagerImplementation implements InputManager {
 
   constructor() {
     window.addEventListener("keydown", ({ key }) => {
-      this.direction = mapKeyToDirection(key, this.direction);
+      this.direction = mapKeyDownToDirection(key, this.direction);
     });
     window.addEventListener("keyup", ({ key }) => {
       this.direction = mapKeyUpToDirection(key, this.direction);
@@ -26,7 +26,7 @@ export class InputManagerImplementation implements InputManager {
   }
 }
 
-function mapKeyToDirection(key: string, currentDirection: Point): Point {
+function mapKeyDownToDirection(key: string, currentDirection: Point): Point {
   switch (key) {
     case "w":
     case "ArrowUp":
@@ -48,13 +48,11 @@ function mapKeyUpToDirection(key: string, currentDirection: Point): Point {
   switch (key) {
     case "w":
     case "ArrowUp":
-      return currentDirection.setY(0);
-    case "a":
-    case "ArrowLeft":
-      return currentDirection.setX(0);
     case "s":
     case "ArrowDown":
       return currentDirection.setY(0);
+    case "a":
+    case "ArrowLeft":
     case "d":
     case "ArrowRight":
       return currentDirection.setX(0);
